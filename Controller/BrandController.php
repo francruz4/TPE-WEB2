@@ -5,9 +5,7 @@ require_once "./View/BrandView.php";
 class BrandController{
 
     private $model;
-    private $view;
-    private $sdsd;
-   
+    private $view;   
 
     function __construct(){
         $this->model=  new BrandModel();
