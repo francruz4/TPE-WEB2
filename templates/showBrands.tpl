@@ -7,9 +7,6 @@
 </form>
 {/if}
 
-
-
-
 <table >
      <thead>
         <tr>
