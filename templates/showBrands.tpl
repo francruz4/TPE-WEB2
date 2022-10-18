@@ -7,7 +7,7 @@
 </form>
 {/if}
 
-<table >
+<table class="text-center">
      <thead>
         <tr>
             <th class="text-center" >Marca</a></th>
@@ -17,7 +17,7 @@
         {foreach from=$brands item=brand}
             <tr>
                 <td class="text-center">
-                    <a class="text-success" href="viewBrand/{$brand->id_marca}">{$brand->nombre}</a>
+                    <a  href="viewBrand/{$brand->id_marca}">{$brand->nombre}</a>
                 </td>
                     <td class="text-center">
                     {if isset ($smarty.session.email)}
