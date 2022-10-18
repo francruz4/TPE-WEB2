@@ -2,7 +2,7 @@
 
 
     <h1>{$titulo}</h1>
-    
+    {if isset ($smarty.session.email)}
     <div class="form-container">
     <form action="addProd" method="post">      
             <label class="navbar-brand" >Modelo</label>
@@ -25,6 +25,7 @@
         <br><br>
     </form>
     </div>
+    {/if}
    
     <div class="table">
         <table class="table table-dark">
@@ -34,8 +35,10 @@
                     <th >Descripcion</th>
                     <th >Precio</th>
                     <th><a class="text-white bg-dark"  href="Brands/">Marca</th>  
+                    {if isset ($smarty.session.email)}
                     <th></th>
                     <th></th>
+                    {/if}
                 </tr>
             </thead>
             <tbody>
@@ -44,9 +47,11 @@
                         <td ><a class="text-white bg-dark"  href="viewModel/{$car->id}">{$car->modelo}</td>
                         <td> {$car->descripcion}</td>
                         <td >$ {$car->precio}</td>
-                        <td><a class="text-white bg-dark"  href="viewBrand/{$car->id_marca}">{$car->marca}</td>    
+                        <td><a class="text-white bg-dark"  href="viewBrand/{$car->id_marca}">{$car->marca}</td> 
+                        {if isset ($smarty.session.email)}
                         <td><a href='delete/{$car->id}' type='button' class='btn btn-danger'>Borrar</a></td> 
-                        <td><a href='edit/{$car->id}'  type='button' class='btn btn-warning'>Editar</a></td>             
+                        <td><a href='edit/{$car->id}'  type='button' class='btn btn-warning'>Editar</a></td>    
+                        {/if}         
                     </tr>
                 {/foreach}
             </tbody>
