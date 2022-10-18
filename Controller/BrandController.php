@@ -6,6 +6,7 @@ class BrandController{
 
     private $model;
     private $view;
+    private $sdsd;
    
 
     function __construct(){
