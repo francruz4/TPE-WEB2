@@ -18,7 +18,12 @@
     <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">AUTOMOTORES CYLON</a>
-      <a class="navbar-brand" href="#">Login</a>
+      {if !isset ($smarty.session.email)}
+        <a class="navbar-brand" href="login">Login</a>
+        {/if}
+        {if isset ($smarty.session.email)}
+        <a class="navbar-brand" href="logout">Logout</a>
+         {/if}
     </div>
   </nav>
     </header>

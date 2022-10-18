@@ -1,5 +1,6 @@
 <?php
 require_once "Controller/CarController.php";
+require_once "Controller/LoginController.php";
 require_once "Controller/BrandController.php";
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
@@ -16,6 +17,7 @@ $params = explode('/', $action);
 
 $CarController = new CarController();
 $BrandController = new BrandController();
+$LoginController = new LoginController();
 
 
 // determina que camino seguir según la acción
@@ -23,6 +25,15 @@ switch ($params[0]) {
 
     case 'home': 
         $CarController->showHome(); 
+        break;
+    case 'login':
+        $LoginController->login();
+        break;
+    case 'logout':
+        $LoginController->logout();
+        break;
+    case 'verify':
+        $LoginController->verifyLogin();
         break;
     case 'viewModel': 
         $CarController->showModel($params[1]); 

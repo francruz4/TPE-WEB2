@@ -1,21 +1,55 @@
 <?php
 require_once "./Model/UserModel.php";
 require_once "./View/LoginView.php";
+require_once "./Helpers/AuthHelper.php";
 
 class LoginController {
 
     private $model;
     private $view;
+    private $authHelper;    
 
     function __construct(){
         $this->model = new UserModel();
         $this->view = new LoginView();
+        $this->authHelper = new AuthHelper();
     }
 
     function login(){
         $this->view->showLogin();
     }
 
+    function logout(){
+        $this->authHelper->logout();
+        $this->view->showHome();
+    }
+
+    function verifyLogin(){
+        if (!empty($_POST['email']) && !empty($_POST['password'])) {
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+            $user = $this->model->getUser($email);
+           
+          if ($user && password_verify($password, $user->password)) {
+
+                $this->authHelper->checkLoggedIn();
+                $_SESSION['email'] = $email;   
+                $_SESSION['id'] = $user->id;
+                $_SESSION['rol'] = $user->rol;
+                $this->view->showHome(); 
+        } else {
+                 $this->view->showLogin("Usuario o contraseña invalidos");
+            }
+        }
+    }
+
     
 
 }
+
+
+
+
+    
+    
+   
